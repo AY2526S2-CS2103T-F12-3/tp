@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE_CODE;
 
 import java.util.ArrayList;
@@ -21,7 +22,8 @@ public class ListDetailsCommandParser implements Parser<ListDetailsCommand> {
 
         if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_COURSE_CODE)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(ListDetailsCommand.MESSAGE_USAGE);
+             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    ListDetailsCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COURSE_CODE);
@@ -33,7 +35,8 @@ public class ListDetailsCommandParser implements Parser<ListDetailsCommand> {
                 .collect(Collectors.toList());
 
         if (rawCodes.isEmpty()) {
-            throw new ParseException(ListDetailsCommand.MESSAGE_USAGE);
+             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    ListDetailsCommand.MESSAGE_USAGE));
         }
 
         List<String> courseCodes = new ArrayList<>();

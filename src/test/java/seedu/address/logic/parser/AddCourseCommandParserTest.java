@@ -1,5 +1,6 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE_CODE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -39,7 +40,8 @@ public class AddCourseCommandParserTest {
     @Test
     public void parse_missingCourseCodePrefix_failure() {
         String invalidInput = "CS2103T";
-        assertParseFailure(parser, invalidInput, AddCourseCommandParser.MESSAGE_FORMAT_ERROR);
+        assertParseFailure(parser, invalidInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    AddCourseCommand.MESSAGE_USAGE));
     }
 
     @Test
@@ -51,12 +53,14 @@ public class AddCourseCommandParserTest {
     @Test
     public void parse_nonEmptyPreamble_failure() {
         String invalidInput = "extra " + PREFIX_COURSE_CODE + "CS2103T";
-        assertParseFailure(parser, invalidInput, AddCourseCommandParser.MESSAGE_FORMAT_ERROR);
+        assertParseFailure(parser, invalidInput, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    AddCourseCommand.MESSAGE_USAGE));
     }
 
     @Test
     public void parse_emptyInput_failure() {
-        assertParseFailure(parser, "", AddCourseCommandParser.MESSAGE_FORMAT_ERROR);
+        assertParseFailure(parser, "", String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    AddCourseCommand.MESSAGE_USAGE));
     }
 
     @Test

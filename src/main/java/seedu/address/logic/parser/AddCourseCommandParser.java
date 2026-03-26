@@ -1,6 +1,7 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COURSE_CODE;
 
 import seedu.address.logic.commands.AddCourseCommand;
@@ -10,9 +11,6 @@ import seedu.address.logic.parser.exceptions.ParseException;
  * Parses input arguments and creates a new AddCourseCommand object.
  */
 public class AddCourseCommandParser implements Parser<AddCourseCommand> {
-
-    public static final String MESSAGE_FORMAT_ERROR = "\u274C Format: addcourse"
-            + " " + PREFIX_COURSE_CODE + "COURSE_CODE";
 
     /**
      * Parses the given {@code String} of arguments in the context of the
@@ -28,7 +26,8 @@ public class AddCourseCommandParser implements Parser<AddCourseCommand> {
 
         if (!ParserUtil.arePrefixesPresent(argMultimap, PREFIX_COURSE_CODE)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(MESSAGE_FORMAT_ERROR);
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                                    AddCourseCommand.MESSAGE_USAGE));
         }
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_COURSE_CODE);
