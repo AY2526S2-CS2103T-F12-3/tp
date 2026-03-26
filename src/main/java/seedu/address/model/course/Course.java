@@ -22,7 +22,7 @@ public class Course {
 
     private final String courseCode;
     private final ArrayList<Student> students;
-    private static UniqueAssessmentList assessments;
+    private final UniqueAssessmentList assessments;
 
     /**
      * Constructs a Course with the specified course code.
@@ -32,6 +32,7 @@ public class Course {
     public Course(String courseCode) {
         this.courseCode = courseCode.trim().toUpperCase();
         this.students = new ArrayList<Student>();
+        this.assessments = new UniqueAssessmentList();
     }
 
     public String getCourseCode() {
@@ -67,14 +68,6 @@ public class Course {
      */
     public boolean removeStudent(String studentId) {
         return students.removeIf(s -> s.getStudentId().equalsIgnoreCase(studentId));
-    }
-
-    /**
-     * Set assessments in this course.
-     *
-     */
-    public void setAssessments(UniqueAssessmentList assessmentList) {
-        assessments = assessmentList;;
     }
 
     /**
