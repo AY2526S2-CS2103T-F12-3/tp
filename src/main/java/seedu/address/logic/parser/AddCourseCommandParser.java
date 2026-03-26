@@ -13,8 +13,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 public class AddCourseCommandParser implements Parser<AddCourseCommand> {
 
     /**
-     * Parses the given {@code String} of arguments in the context of the
-     * AddCourseCommand
+     * Parses the given {@code String} of arguments: c/course_code
      * and returns an AddCourseCommand object for execution.
      *
      * @throws ParseException if the user input does not conform the expected format
