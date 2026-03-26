@@ -53,7 +53,7 @@ public class RemoveCourseCommandParserTest {
     public void parse_courseCodeWithSpaces_failure() {
         // Course codes with spaces are not allowed (regex [A-Za-z0-9]{2,10})
         String courseCodeWithSpaces = "CS 2103T";
-        assertParseFailure(parser, courseCodeWithSpaces,String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+        assertParseFailure(parser, courseCodeWithSpaces, String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                                                     RemoveCourseCommand.MESSAGE_USAGE));
     }
 }
